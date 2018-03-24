@@ -4,7 +4,7 @@ import "./Jumbotron.css";
 export const Jumbotron = props => (
   <div>
     <br />
-    <div style={{ height: 300, clear: "both" }} className="jumbotron">
+    <div className="jumbotron">
       {props.children}
     </div>
   </div>
