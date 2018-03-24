@@ -15,7 +15,6 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^3.5.0"
-    // "nodemon": "^1.11.0"
   },
   "dependencies": {
     "axios": "^0.18.0",
