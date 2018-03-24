@@ -23,6 +23,7 @@
     "express": "^4.15.4",
     "express-static": "^1.2.5",
     "mongoose": "^5.0.10",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "react-router-dom": "^4.2.2"
   }
 }
