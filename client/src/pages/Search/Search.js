@@ -23,6 +23,7 @@ class Search extends Component {
   };
 
   handleFormSubmit = event => {
+    this.setState({message: null});
     event.preventDefault();
     if (this.state.topic) {
       API.getArticles(this.state.topic)
