@@ -2,10 +2,11 @@ const axios = require("axios");
 const router = require("express").Router();
 const articlesController = require("../controllers/articleController");
 
-router.post("/recipes", articlesController.create);
+router.post("/saved", articlesController.create);
+router.get("/saved", articlesController.findAll);
+router.delete("/saved/:id", articlesController.remove);
 
-router.get("/recipes", (req, res) => {
-  console.log(req.query.q);
+router.get("/articles", (req, res) => {
   axios
     .get("http://api.nytimes.com/svc/search/v2/articlesearch.json", { 
       params: {
@@ -13,7 +14,6 @@ router.get("/recipes", (req, res) => {
         'q': req.query.q 
       }})
     .then( articles => {
-      console.log(articles.data.response.docs);
       res.json(articles.data.response.docs)
     })
     .catch(err => res.status(422).json(err));

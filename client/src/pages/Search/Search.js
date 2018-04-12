@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
+import { Link } from 'react-router-dom';
 import { Input, FormBtn } from "../../components/Form";
 import { Col, Row, Container } from "../../components/Grid";
 import {Jumbotron} from "../../components/Jumbotron";
@@ -25,7 +26,6 @@ class Search extends Component {
     if (this.state.topic) {
       API.getArticles(this.state.topic)
       .then(res => {
-        console.log(res.data);
         this.setState({ articles: res.data })
       })
       .catch(err => console.log(err));
@@ -47,6 +47,7 @@ class Search extends Component {
           <h1>Fake News</h1>
           <h4>Find out what conspiracies the liberal media is pushing today by searching the New York Times.</h4>
           <p><i>Disclaimer: The opinions of this app do not reflect the opinons of its creator.</i></p>
+          <Link className="link btn btn-danger" to='/saved' style={{ float: "right", marginBottom: 10 }}>View Saved Articles</Link>
         </Jumbotron>
         <Row>
           <Col size="md-12">
@@ -98,7 +99,7 @@ class Search extends Component {
                       <SaveButton 
                         key={article._id} 
                         id={article.id}
-                        onClick={() => this.handleSave(article._id)}
+                        onClick={() => this.handleSave({headline: article.headline.main, link: article.web_url, date: article.pub_date})}
                       >
                         Save Article
                       </SaveButton>
