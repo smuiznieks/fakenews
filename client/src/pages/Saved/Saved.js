@@ -50,13 +50,11 @@ class Saved extends Component {
                                         <div key={article._id}>
                                             <hr style={{ backgroundColor: "white" }}/>
                                             <ListItem
-                                                key={article._id}
                                                 headline={article.headline}
                                                 date={article.date}
-                                                url={article.url}
+                                                url={article.link}
                                             />
                                             <SaveButton 
-                                                key={article._id} 
                                                 id={article.id}
                                                 onClick={() => this.handleDelete(article._id)}
                                                 >

@@ -12,6 +12,7 @@ class Search extends Component {
     topic: '',
     startYear: '',
     endYear: '',
+    message: null
   };
 
   handleInputChange = event => {
@@ -35,9 +36,11 @@ class Search extends Component {
   handleSave = articleData => {
     API.saveArticle(articleData)
     .then(res => {
-      console.log('Complete');
+      this.setState({message: 'Your article has been saved.'});
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      this.setState({message: 'This article has already been saved.'})
+    });
   };
 
   render() {
@@ -83,6 +86,9 @@ class Search extends Component {
         <br />
         <Row>
           <Col size="md-12">
+            {this.state.message && <p className="text-center">
+              {this.state.message}
+            </p>}
             {this.state.articles.length ? (
               <List>
                 {this.state.articles.map(article => {
